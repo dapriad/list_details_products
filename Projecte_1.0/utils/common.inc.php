@@ -23,6 +23,7 @@
     function loadView($rutaVista, $templateName, $arrPassValue = '') {
 		$view_path = $rutaVista . $templateName;
 		$arrData = '';
+		//$arrData = $view_path;
 		
 		if (file_exists($view_path)) {
 			if (isset($arrPassValue))

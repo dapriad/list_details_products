@@ -5,7 +5,7 @@
 					<nav id="nav">
 						<a href="index.php?module=main">HOME</a>
 						<a href="index.php?module=products&view=create_products">CREATE PRODUCTS</a>
-						<a href="index.php?module=products">LIST PRODUCTS</a>
+						<a href="index.php?module=frontend_products">LIST PRODUCTS</a>
 						<a href="index.php?module=generic">GENERIC</a>
 						<a href="index.php?module=elements">ELEMENTS</a>
 					</nav>

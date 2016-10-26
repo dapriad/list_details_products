@@ -5,29 +5,6 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/Projecte_1.0/modules/products/utils/funct
 include ($_SERVER['DOCUMENT_ROOT'] . "/Projecte_1.0/utils/upload.php");
 include ($_SERVER['DOCUMENT_ROOT'] . "/Projecte_1.0/utils/common.inc.php");
 
-if ($_GET["id_prod"]) {
-    $id = $_GET["id_prod"];
-    $path_model = $_SERVER['DOCUMENT_ROOT'].'/Projecte_1.0/modules/products/model/model/';
-    $arrValue = loadModel($path_model, "product_model", "details_products",$id);
-    if ($arrValue[0]) {
-        loadView('modules/products/view/', 'details_products.php', $arrValue[0]);
-        
-    } else {
-        $message = "NOT FOUND PRODUCT";
-        loadView('view/inc/', '404.php', $message);
-    }
-} else {
-    $path_model = $_SERVER['DOCUMENT_ROOT'].'/Projecte_1.0/modules/products/model/model/';
-    $arrValue = loadModel($path_model, "product_model", "list_products");
-    
-    if ($arrValue) {
-        loadView('modules/products/view/', 'list_products.php', $arrValue);
-    } else {
-        $message = "NOT PRODUCTS";
-        loadView('view/inc/', '404.php', $message);
-    }
-}
-
 if ((isset($_GET["upload"])) && ($_GET["upload"] == true)) {
 	
     $result_avatar = upload_files();
