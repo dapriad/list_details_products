@@ -268,6 +268,7 @@ function load_countries_v2(cad) {
       });
     })
     .fail(function() {
+        // console.log(cad);
         alert( "error load_countries" );
     });
 }
@@ -276,10 +277,11 @@ function load_countries_v1() {
     $.get( "modules/products/controller/controller_products.class.php?load_pais=true", 
         function( response ) {
              console.log(response);
-            if(response === 'error'){
+            if(response.match('error')){
                 load_countries_v2("resources/ListOfCountryNamesByName.json");
             }else{
                 load_countries_v2("modules/products/controller/controller_products.class.php?load_pais=true"); //oorsprong.org
+                // load_countries_v2("resources/ListOfCountryNamesByName.json");
             }
     })
     .fail(function(response) {

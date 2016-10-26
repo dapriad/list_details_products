@@ -139,11 +139,19 @@ if(  (isset($_GET["load_pais"])) && ($_GET["load_pais"] == true)  ){
 	$json = array();
         	
     $url = 'http://www.oorsprong.org/websamples.countryinfo/CountryInfoService.wso/ListOfCountryNamesByName/JSON';
-        
-	$path_model=$_SERVER['DOCUMENT_ROOT'].'/Projecte_1.0/modules/products/model/model/';
-	$json = loadModel($path_model, "product_model", "obtain_paises", $url);
+    function url_exist($url){
+        $file_headers = @get_headers($url);
+        if(strpos($file_headers[0],"200 OK")==false){
+            $exists= false;
+        }else{
+            $path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
+            $json=loadModel($path_model,"product_model","obtain_paises",$url);
+            $exists=true;
+        }
+        return $exists;
+    }
 		
-	if($json){
+	if($exists){
 		echo $json;
 		exit;
 	}else{
